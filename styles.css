@@ -1,3 +1,4 @@
+/* 基本样式设置 */
 html {
     scroll-behavior: smooth;
 }
@@ -5,7 +6,8 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
     background: linear-gradient(135deg, #D4E157 0%, #A7D129 100%);
     color: #333;
 }
@@ -65,16 +67,19 @@ header p {
     line-height: 1.6em;
 }
 
+/* 修改后的 gallery 样式 */
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
+    /* 间距20px */
     justify-content: space-between;
     margin-top: 40px;
 }
 
+/* 默认设置为整个宽度 */
 .gallery-item {
     width: 100%;
-    /* 默认是整行显示一个项目 */
     margin-bottom: 40px;
     background-color: white;
     padding: 20px;
@@ -104,12 +109,25 @@ header p {
     color: #666;
     margin: 10px 0 0;
     font-size: 0.9em;
-    /* 调整字体大小 */
 }
 
 .gallery-item strong {
     color: #4a4a4a;
-    /* 使标签变得更明显 */
+}
+
+/* 在至少500px宽屏幕上 */
+@media screen and (min-width: 500px) {
+    .gallery-item {
+        width: calc(50% - 10px);
+        /* 每个项目占50%，并减去间距的一半 */
+    }
+}
+
+/* 在至少700px宽屏幕上 */
+@media screen and (min-width: 700px) {
+    .gallery-item {
+        width: calc(50% - 10px);
+    }
 }
 
 footer {
@@ -164,7 +182,6 @@ footer {
 
 .portfolio-navbar {
     background-color: rgba(255, 255, 255, 0.0);
-    /* 增加透明效果，0.8为透明度 */
     padding: 10px;
     text-align: center;
     margin-bottom: 20px;
@@ -180,18 +197,4 @@ footer {
 
 .portfolio-navbar a:hover {
     text-decoration: underline;
-}
-
-/* For screens that are at least 700px wide */
-@media screen and (min-width: 700px) {
-    .gallery-item {
-        width: 48%;
-    }
-}
-
-/* For screens that are at least 500px wide */
-@media screen and (min-width: 500px) {
-    .gallery-item {
-        width: 48%;
-    }
 }
