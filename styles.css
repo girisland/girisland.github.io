@@ -79,25 +79,33 @@ header p {
 
 /* 默认设置为整个宽度 */
 .gallery-item {
-    width: 100%;
-    margin-bottom: 40px;
+    width: calc(50% - 10px); /* 两列布局，考虑间距 */
+    margin-bottom: 20px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    box-sizing: border-box; /* 确保padding不会增加元素的总宽度 */
+}
+
+/* 在宽度大于 768px 的屏幕上使用两列布局 */
+@media screen and (max-width: 768px) {
+    .gallery-item {
+        width: 100%; /* 在小屏幕上变为单列 */
+    }
 }
 
 .gallery-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-item img {
     width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    height: auto;
+    display: block;
 }
 
 .gallery-item h3 {
@@ -150,24 +158,44 @@ footer {
 .lightbox {
     display: none;
     position: fixed;
-    top: 0;
+    z-index: 999;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.5s;
 }
 
-.lightbox img {
+.lightbox-content {
     max-width: 90%;
-    max-height: 80%;
-    border-radius: 10px;
+    max-height: 90%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.lightbox.show {
-    display: flex;
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .social-links a {
@@ -197,4 +225,22 @@ footer {
 
 .portfolio-navbar a:hover {
     text-decoration: underline;
+}
+
+/* 添加过滤按钮样式 */
+.filter-btn {
+    background-color: #8BC34A;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #689F38;
 }
